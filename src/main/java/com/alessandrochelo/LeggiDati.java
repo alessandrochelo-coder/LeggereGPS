@@ -41,6 +41,10 @@ public class LeggiDati
         int numRead = comPort.readBytes(readBuffer, readBuffer.length);
         System.out.println("Letti " + numRead + " bytes.");
 
+        // Converte in testo usando la codifica standard UTF-8
+        String testo = new String(readBuffer, 0, numRead, java.nio.charset.StandardCharsets.UTF_8);
+        System.out.println("Testo ricevuto: " + testo);
+
         // 6. Chiudi la porta
         comPort.closePort();
         System.out.println("Porta chiusa.");
